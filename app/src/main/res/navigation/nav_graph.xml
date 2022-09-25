@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainScreenFragment">
+    <fragment
+        android:id="@+id/blogDetailsFragment"
+        android:name="com.example.test.screens.main.blog.BlogDetailsFragment"
+        android:label="BlogDetailsFragment" >
+        <argument
+            android:name="blogId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainScreenFragment"
+        android:name="com.example.test.screens.main.MainScreenFragment"
+        android:label="MainScreenFragment" >
+        <action
+            android:id="@+id/action_mainScreenFragment_to_blogDetailsFragment"
+            app:destination="@id/blogDetailsFragment" />
+    </fragment>
+</navigation>
