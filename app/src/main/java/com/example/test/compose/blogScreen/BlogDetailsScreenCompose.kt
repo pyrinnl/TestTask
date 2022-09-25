@@ -2,15 +2,17 @@ package com.example.test.compose.blogScreen
 
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.test.compose.mainScreen.ErrorViewState
 import com.example.test.compose.mainScreen.LoadingViewState
 import com.example.test.screens.main.blog.BlogDetailsViewModel
@@ -37,9 +39,9 @@ internal fun LoadedBlogViewState(state: BlogDetailsViewModel.State.Loaded) {
         item {
             GlideImage(
                 imageModel = state.blogDetails.image,
-                imageOptions = ImageOptions(
-                    contentScale = ContentScale.FillWidth
-                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp)
             )
         }
         item {
@@ -59,30 +61,29 @@ internal fun LoadedBlogViewState(state: BlogDetailsViewModel.State.Loaded) {
 
 @Composable
 internal fun BlogTitleAndSubtitle(title: String, subtitle: String) {
-    Text(title)
-    Text(subtitle)
+    Text(
+        text = title,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 12.dp),
+
+        )
+    Text(
+        text = subtitle,
+        fontSize = 16.sp,
+        fontStyle = FontStyle.Normal,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(start = 12.dp, end = 12.dp, top = 4.dp)
+    )
 }
 
 @Composable
 internal fun BlogContent(content: String) {
-    Text(content)
+    Text(
+        text = content,
+        modifier = Modifier.padding(12.dp)
+    )
 }
-
-@Composable
-internal fun PlaceHolder() {
-    Surface(
-        color = MaterialTheme.colors.primarySurface,
-    modifier = Modifier.fillMaxWidth()) {
-
-    }
-}
-
-@Preview
-@Composable
-internal fun PreviewPlaceHolder() {
-    PlaceHolder()
-}
-
 
 
 

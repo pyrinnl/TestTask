@@ -2,13 +2,11 @@ package com.example.test.compose.mainScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -48,9 +46,12 @@ internal fun ErrorViewState(error: String, onTryResubscribe: () -> Unit) {
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 32.dp)
                 )
-                TextButton(
+                OutlinedButton(
                     onClick = onTryResubscribe,
-                    modifier = Modifier.background(MaterialTheme.colors.error)
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.LightGray
+                    ),
+                    modifier = Modifier.padding(top = 12.dp)
                 ) {
                     Text("Попробовать снова")
                 }
